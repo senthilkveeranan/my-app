@@ -1,10 +1,16 @@
-node{
-   stage('SCM checkout'){
-     git 'https://github.com/senthilkveeranan/my-app'
-   }
-   stage('Compile-package'){
-     sh 'mvn package'
-   }
-      
+pipeline {
+    agent any
+    tools { 
+      maven 'maven-3' 
+    }
+    stages {
+      stage ('Build') {
+        steps {
+          sh 'mvn -B -ntp -Dmaven.test.failure.ignore verify'
+        }
+      }
+
+    }
 }
+
    
