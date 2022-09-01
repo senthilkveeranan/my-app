@@ -11,6 +11,9 @@ node{
         mail bcc: '', body: '''Hi Welcome to Jenkins email alerts
         Thanks
         Senthil Veera''', cc: '', from: '', replyTo: '', subject: 'Jenkins-job', to: 'vsknalli@gmail.com,sabaa.23@gmail.com'
-    
+    }
+    stage('Slack Notification'){
+    slackSend channel: '#infra-automation-in-devops-sre ', color: 'good,', 
+    message: 'Welcome To Jenkins-Slack Notifications', tokenCredentialId: 'slac-demo'
     }
 }
